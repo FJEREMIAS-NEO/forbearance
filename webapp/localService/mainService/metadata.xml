@@ -214,6 +214,7 @@
                 <Property Name="Capital" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="variable"/>
                 <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5"/>
                 <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="BusinessPartnerGuid" Type="Edm.Guid"/>
             </EntityType>
             <EntityType Name="VH_ContractChngType">
                 <Key>
@@ -529,6 +530,7 @@
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Label" String="FBE modif type"/>
                 <Annotation Term="SAP__common.Heading" String="FBE modification type"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification type"/>
@@ -539,6 +541,7 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/FbeModdate">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Label" String="FBE modif date"/>
                 <Annotation Term="SAP__common.Heading" String="FBE modification date"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification date"/>
@@ -554,6 +557,7 @@
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Label" String="Contract Change"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE contract change"/>
             </Annotations>
@@ -800,12 +804,6 @@
                                 <String>IFRS9</String>
                             </Collection>
                         </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="SAP__UI.HeaderInfo">
-                    <Record>
-                        <PropertyValue Property="TypeName" String="{@i18n&gt;typeOfModification}"/>
-                        <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;typesOfModification}"/>
                     </Record>
                 </Annotation>
                 <Annotation Term="SAP__UI.LineItem">
@@ -1270,38 +1268,6 @@
                         <PropertyValue Property="Title" String="Status"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="SAP__UI.Facets">
-                    <Collection>
-                        <Record Type="SAP__UI.CollectionFacet">
-                            <PropertyValue Property="Label" String="Only for test"/>
-                            <PropertyValue Property="ID" String="Test"/>
-                            <PropertyValue Property="Facets">
-                                <Collection>
-                                    <Record Type="SAP__UI.ReferenceFacet">
-                                        <PropertyValue Property="ID" String="TestSub"/>
-                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Test"/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                        <Record Type="SAP__UI.CollectionFacet">
-                            <PropertyValue Property="Label" String="Forbearance &amp; IFRS9-Modification"/>
-                            <PropertyValue Property="ID" String="Forbearance"/>
-                            <PropertyValue Property="Facets">
-                                <Collection>
-                                    <Record Type="SAP__UI.ReferenceFacet">
-                                        <PropertyValue Property="ID" String="FBE"/>
-                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Forbearance"/>
-                                    </Record>
-                                    <Record Type="SAP__UI.ReferenceFacet">
-                                        <PropertyValue Property="ID" String="FBE_POS"/>
-                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@SAP__UI.PresentationVariant"/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Collection>
-                </Annotation>
                 <Annotation Term="SAP__UI.HeaderFacets">
                     <Collection>
                         <Record Type="SAP__UI.ReferenceFacet">
@@ -1331,6 +1297,38 @@
                         <Record Type="SAP__UI.ReferenceFacet">
                             <PropertyValue Property="ID" String="Changing"/>
                             <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Changing"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Only for test"/>
+                            <PropertyValue Property="ID" String="Test"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="TestSub"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Test"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="SAP__UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Forbearance &amp; IFRS9-Modification"/>
+                            <PropertyValue Property="ID" String="Forbearance"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="FBE"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Forbearance"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="FBE_POS"/>
+                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@SAP__UI.PresentationVariant"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -1767,6 +1765,18 @@
                 <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Draft In Process By (Description)"/>
             </Annotations>
+            <Annotations Target="SAP__self.PositionType/FbeModflag">
+                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
+                <Annotation Term="SAP__common.Label" String="FBE modif flag"/>
+                <Annotation Term="SAP__common.Heading" String="FBE modification flag"/>
+                <Annotation Term="SAP__common.QuickInfo" String="FBE modification flag"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VH_Loan_BondType/BusinessPartnerGuid">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="BP GUID"/>
+                <Annotation Term="SAP__common.Heading" String="Business Partner GUID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Business Partner GUID"/>
+            </Annotations>
             <Annotations Target="SAP__self.VH_ModTypeType/Spras">
                 <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Language Key"/>
@@ -1794,11 +1804,6 @@
             </Annotations>
             <Annotations Target="SAP__self.VH_ModTypeType/Descr">
                 <Annotation Term="SAP__common.Label" String="Description"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PositionType/FbeModflag">
-                <Annotation Term="SAP__common.Label" String="FBE modif flag"/>
-                <Annotation Term="SAP__common.Heading" String="FBE modification flag"/>
-                <Annotation Term="SAP__common.QuickInfo" String="FBE modification flag"/>
             </Annotations>
             <Annotations Target="SAP__self.PositionType/CreatedAt">
                 <Annotation Term="SAP__common.Label" String="Created On"/>
