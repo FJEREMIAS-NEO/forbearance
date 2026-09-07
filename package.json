@@ -8,11 +8,10 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
   "devDependencies": {
+    "@sap-ux/ui5-middleware-fe-mockserver": "^2.4.16",
+    "@sap/ux-ui5-tooling": "^1.31.1",
     "@ui5/cli": "^4.0.33",
-    "@sap/ux-ui5-tooling": "1",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2",
     "rimraf": "^5.0.5"
   },
   "scripts": {

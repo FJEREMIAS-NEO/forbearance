@@ -18,8 +18,8 @@ builder:
           client: '100'
         app:
           name: Z_FORBEARANCE
-          description: Deployment 16.07.26
+          description: Deployment 14.08.26
           package: ZFBE
-          transport: ND1K902936
+          transport: ND1K903039
         exclude:
           - /test/

@@ -16,9 +16,6 @@
             <Annotations Target="SAP__self.HeaderType/BusinessPartner">
                 <Annotation Term="Common.Label" String="{@i18n>businessPartner}"/>
             </Annotations>
-            <Annotations Target="SAP__self.HeaderType/BusinessPartnerExt">
-                <Annotation Term="Common.Label" String="{@i18n>businessPartnerExtern}"/>
-            </Annotations>
             <Annotations Target="SAP__self.HeaderType/CreatedBy">
                 <Annotation Term="Common.Label" String="{@i18n>createdBy}"/>
             </Annotations>
@@ -56,18 +53,6 @@
                     <Record>
                         <PropertyValue Property="Value" Path="BusinessPartner"/>
                         <PropertyValue Property="Title" String="{@i18n>businessPartner}"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="UI.DataPoint" Qualifier="ClientNumberExt">
-                    <Record>
-                        <PropertyValue Property="Value" Path="BusinessPartnerExt"/>
-                        <PropertyValue Property="Title" String="{@i18n>businessPartnerExtern}"/>
-                    </Record>
-                </Annotation>
-                <Annotation Term="UI.DataPoint" Qualifier="ReferenceNumber">
-                    <Record>
-                        <PropertyValue Property="Value" Path="TransactionId"/>
-                        <PropertyValue Property="Title" String="{@i18n>referenceNumber}"/>
                     </Record>
                 </Annotation>
                 <Annotation Term="UI.DataPoint" Qualifier="Status">
@@ -112,7 +97,7 @@
                         <PropertyValue Property="Data">
                             <Collection>
                                 <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value" Path="BusinessPartner"/>
+                                    <PropertyValue Property="Value" Path="BusinessPartnerId"/>
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value" Path="TransactionId"/>
@@ -137,6 +122,30 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="BPName">
+                    <Record>
+                        <PropertyValue Property="Value" Path="BusinessPartnerName"/>
+                        <PropertyValue Property="Title" String="{@i18n>businessPartnerName}"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="BPNumber">
+                    <Record>
+                        <PropertyValue Property="Value" Path="BusinessPartner"/>
+                        <PropertyValue Property="Title" String="{@i18n>businessPartner}"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="BPNumberExt">
+                    <Record>
+                        <PropertyValue Property="Value" Path="BusinessPartnerExt"/>
+                        <PropertyValue Property="Title" String="{@i18n>businessPartnerExtern}"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="ReferenceNumber">
+                    <Record>
+                        <PropertyValue Property="Value" Path="OpportunityId"/>
+                        <PropertyValue Property="Title" String="{@i18n>referenceNumber}"/>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="SAP__self.PositionType">
                 <Annotation Term="UI.LineItem">
@@ -149,12 +158,16 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="{@i18n>typeOfModification}"/>
                             <PropertyValue Property="Value" Path="FbeModtype"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>     
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="{@i18n>leading}"/>
                             <PropertyValue Property="Value" Path="FbeModflag"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>                       
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="IFRS9"/>
+                            <PropertyValue Property="Label" String="{@i18n>ifrs9}"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="{@i18n>modificationDate}"/>
