@@ -124,20 +124,6 @@
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "ResponsiveTable"
-                  },
-                  "columns": {
-                    "DataField::BusinessPartnerName": {
-                      "widthIncludingColumnHeader": true
-                    },
-                    "DataField::BusinessPartner": {
-                      "widthIncludingColumnHeader": true
-                    },
-                    "DataField::FlagRefbe": {
-                      "widthIncludingColumnHeader": true
-                    },
-                    "DataField::CreatedBy": {
-                      "widthIncludingColumnHeader": true
-                    }
                   }
                 }
               }

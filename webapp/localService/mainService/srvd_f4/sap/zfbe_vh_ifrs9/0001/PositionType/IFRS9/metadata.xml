@@ -56,7 +56,7 @@
                     <PropertyRef Name="Value"/>
                 </Key>
                 <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
             </EntityType>
             <EntityContainer Name="Container">
                 <EntitySet Name="ZFBE_VH_IFRS9" EntityType="com.sap.gateway.srvd_f4.zfbe_vh_ifrs9.v0001.ZFBE_VH_IFRS9Type"/>

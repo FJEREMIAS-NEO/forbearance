@@ -86,7 +86,7 @@
                     <PropertyRef Name="Value"/>
                 </Key>
                 <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
             </EntityType>
             <EntityType Name="PositionType">
                 <Key>
@@ -103,15 +103,13 @@
                 <Property Name="ChngContract" Type="Edm.String" Nullable="false" MaxLength="1"/>
                 <Property Name="ContractChngText" Type="Edm.String" Nullable="false" MaxLength="5"/>
                 <Property Name="IFRS9" Type="Edm.String" Nullable="false" MaxLength="3"/>
-                <Property Name="IFRS9Text" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="IFRS9Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
                 <Property Name="ChngContractDate" Type="Edm.Date"/>
                 <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
                 <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="LastChangedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
                 <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
-                <Property Name="TransactionId" Type="Edm.Guid"/>
-                <Property Name="HideFbeFields" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
@@ -155,6 +153,8 @@
                 <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="2"/>
                 <Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="20"/>
                 <Property Name="HideFbeFields" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="HideVariantFBE" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="HideVariantNoFBE" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
@@ -530,7 +530,6 @@
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
-                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Label" String="FBE modif type"/>
                 <Annotation Term="SAP__common.Heading" String="FBE modification type"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification type"/>
@@ -541,7 +540,6 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/FbeModdate">
                 <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Label" String="FBE modif date"/>
                 <Annotation Term="SAP__common.Heading" String="FBE modification date"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification date"/>
@@ -557,7 +555,6 @@
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
-                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Label" String="Contract Change"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE contract change"/>
             </Annotations>
@@ -600,17 +597,6 @@
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.Label" String="Changed On"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PositionType/TransactionId">
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__common.Label" String="Object Id"/>
-                <Annotation Term="SAP__common.QuickInfo" String="CRM Object ID"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PositionType/HideFbeFields">
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-                <Annotation Term="SAP__common.Label" String="TRUE"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
             </Annotations>
             <Annotations Target="SAP__self.PositionType/HasDraftEntity">
                 <Annotation Term="SAP__core.Computed"/>
@@ -711,13 +697,6 @@
                 </Annotation>
                 <Annotation Term="SAP__capabilities.FilterRestrictions">
                     <Record>
-                        <PropertyValue Property="NonFilterableProperties">
-                            <Collection>
-                                <PropertyPath>HideFbeFields</PropertyPath>
-                                <PropertyPath>__EntityControl</PropertyPath>
-                                <PropertyPath>__FieldControl</PropertyPath>
-                            </Collection>
-                        </PropertyValue>
                         <PropertyValue Property="Filterable" Bool="true"/>
                         <PropertyValue Property="FilterExpressionRestrictions">
                             <Collection>
@@ -731,13 +710,18 @@
                                 </Record>
                             </Collection>
                         </PropertyValue>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                                <PropertyPath>__FieldControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
                     </Record>
                 </Annotation>
                 <Annotation Term="SAP__capabilities.SortRestrictions">
                     <Record>
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
-                                <PropertyPath>HideFbeFields</PropertyPath>
                                 <PropertyPath>__EntityControl</PropertyPath>
                                 <PropertyPath>__FieldControl</PropertyPath>
                             </Collection>
@@ -806,7 +790,7 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="SAP__UI.LineItem">
+                <Annotation Term="SAP__UI.LineItem" Qualifier="VariantFBE">
                     <Collection>
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Label" String="ID"/>
@@ -816,13 +800,11 @@
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Label" String="Type of modification"/>
                             <PropertyValue Property="Value" Path="FbeModtype"/>
-                            <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Label" String="Leading"/>
                             <PropertyValue Property="Value" Path="FbeModflag"/>
-                            <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="SAP__UI.DataField">
@@ -833,12 +815,10 @@
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Label" String="Contract adjustment"/>
                             <PropertyValue Property="Value" Path="ChngContract"/>
-                            <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                         </Record>
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Label" String="Modification date"/>
                             <PropertyValue Property="Value" Path="FbeModdate"/>
-                            <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                         </Record>
                         <Record Type="SAP__UI.DataField">
                             <PropertyValue Property="Label" String="Contract adjustment date"/>
@@ -846,8 +826,45 @@
                         </Record>
                     </Collection>
                 </Annotation>
-                <Annotation Term="SAP__UI.PresentationVariant">
+                <Annotation Term="SAP__UI.LineItem" Qualifier="VariantNoFBE">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="ID"/>
+                            <PropertyValue Property="Value" Path="ContractNumber"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="IFRS9-Modification"/>
+                            <PropertyValue Property="Value" Path="IFRS9"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Contract adjustment date"/>
+                            <PropertyValue Property="Value" Path="ChngContractDate"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant" Qualifier="VariantNoFBE">
                     <Record>
+                        <PropertyValue Property="ID" String="VariantNoFBE"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="ContractNumber"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@SAP__UI.LineItem#VariantNoFBE</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant" Qualifier="VariantFBE">
+                    <Record>
+                        <PropertyValue Property="ID" String="VariantFBE"/>
                         <PropertyValue Property="SortOrder">
                             <Collection>
                                 <Record Type="SAP__common.SortOrderType">
@@ -862,7 +879,7 @@
                         </PropertyValue>
                         <PropertyValue Property="Visualizations">
                             <Collection>
-                                <AnnotationPath>@SAP__UI.LineItem</AnnotationPath>
+                                <AnnotationPath>@SAP__UI.LineItem#VariantFBE</AnnotationPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -885,7 +902,7 @@
                 <Annotation Term="SAP__common.QuickInfo" String="Business Partner GUID"/>
             </Annotations>
             <Annotations Target="SAP__self.HeaderType/TransactionId">
-                <Annotation Term="SAP__common.Label" String="Reference Number GUID"/>
+                <Annotation Term="SAP__common.Label" String="Transaction GUID"/>
                 <Annotation Term="SAP__common.Heading" String="Object Id"/>
                 <Annotation Term="SAP__common.QuickInfo" String="CRM Object ID"/>
             </Annotations>
@@ -1020,6 +1037,19 @@
             </Annotations>
             <Annotations Target="SAP__self.HeaderType/HideFbeFields">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="TRUE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+            </Annotations>
+            <Annotations Target="SAP__self.HeaderType/HideVariantFBE">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="TRUE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+            </Annotations>
+            <Annotations Target="SAP__self.HeaderType/HideVariantNoFBE">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="TRUE"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
             </Annotations>
@@ -1152,6 +1182,8 @@
                                 <PropertyPath>Status</PropertyPath>
                                 <PropertyPath>StatusText</PropertyPath>
                                 <PropertyPath>HideFbeFields</PropertyPath>
+                                <PropertyPath>HideVariantFBE</PropertyPath>
+                                <PropertyPath>HideVariantNoFBE</PropertyPath>
                                 <PropertyPath>__CreateByAssociationControl</PropertyPath>
                                 <PropertyPath>__EntityControl</PropertyPath>
                                 <PropertyPath>__OperationControl</PropertyPath>
@@ -1183,6 +1215,8 @@
                                 <PropertyPath>Status</PropertyPath>
                                 <PropertyPath>StatusText</PropertyPath>
                                 <PropertyPath>HideFbeFields</PropertyPath>
+                                <PropertyPath>HideVariantFBE</PropertyPath>
+                                <PropertyPath>HideVariantNoFBE</PropertyPath>
                                 <PropertyPath>__CreateByAssociationControl</PropertyPath>
                                 <PropertyPath>__EntityControl</PropertyPath>
                                 <PropertyPath>__OperationControl</PropertyPath>
@@ -1234,6 +1268,20 @@
                         <PropertyValue Property="TargetProperties">
                             <Collection>
                                 <String>FinancialInstrumentType</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.SideEffects" Qualifier="SAP__Field_TransactionId">
+                    <Record Type="SAP__common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>TransactionId</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath/>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -1325,7 +1373,13 @@
                                     </Record>
                                     <Record Type="SAP__UI.ReferenceFacet">
                                         <PropertyValue Property="ID" String="FBE_POS"/>
-                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@SAP__UI.PresentationVariant"/>
+                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@SAP__UI.PresentationVariant#VariantFBE"/>
+                                        <Annotation Term="SAP__UI.Hidden" Path="HideVariantFBE"/>
+                                    </Record>
+                                    <Record Type="SAP__UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="FBE_POS_IFRS9"/>
+                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@SAP__UI.PresentationVariant#VariantNoFBE"/>
+                                        <Annotation Term="SAP__UI.Hidden" Path="HideVariantNoFBE"/>
                                     </Record>
                                 </Collection>
                             </PropertyValue>
@@ -1397,22 +1451,21 @@
                 <Annotation Term="SAP__UI.LineItem">
                     <Collection>
                         <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Label" String="Business Partner Name"/>
-                            <PropertyValue Property="Value" Path="BusinessPartnerName"/>
+                            <PropertyValue Property="Label" String="Business Partner GUID"/>
+                            <PropertyValue Property="Value" Path="BusinessPartnerId"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Label" String="CRM Business Partner Number"/>
-                            <PropertyValue Property="Value" Path="BusinessPartner"/>
+                            <PropertyValue Property="Label" String="Transaction GUID"/>
+                            <PropertyValue Property="Value" Path="TransactionId"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__UI.SelectionFields">
                     <Collection>
-                        <PropertyPath>BusinessPartnerName</PropertyPath>
-                        <PropertyPath>BusinessPartner</PropertyPath>
-                        <PropertyPath>CreatedBy</PropertyPath>
+                        <PropertyPath>BusinessPartnerId</PropertyPath>
+                        <PropertyPath>TransactionId</PropertyPath>
                     </Collection>
                 </Annotation>
                 <Annotation Term="Communication.Contact">
@@ -1765,12 +1818,6 @@
                 <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Draft In Process By (Description)"/>
             </Annotations>
-            <Annotations Target="SAP__self.PositionType/FbeModflag">
-                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
-                <Annotation Term="SAP__common.Label" String="FBE modif flag"/>
-                <Annotation Term="SAP__common.Heading" String="FBE modification flag"/>
-                <Annotation Term="SAP__common.QuickInfo" String="FBE modification flag"/>
-            </Annotations>
             <Annotations Target="SAP__self.VH_Loan_BondType/BusinessPartnerGuid">
                 <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="BP GUID"/>
@@ -1804,6 +1851,11 @@
             </Annotations>
             <Annotations Target="SAP__self.VH_ModTypeType/Descr">
                 <Annotation Term="SAP__common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PositionType/FbeModflag">
+                <Annotation Term="SAP__common.Label" String="FBE modif flag"/>
+                <Annotation Term="SAP__common.Heading" String="FBE modification flag"/>
+                <Annotation Term="SAP__common.QuickInfo" String="FBE modification flag"/>
             </Annotations>
             <Annotations Target="SAP__self.PositionType/CreatedAt">
                 <Annotation Term="SAP__common.Label" String="Created On"/>

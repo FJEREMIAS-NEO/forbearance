@@ -23,25 +23,13 @@
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="{@i18n>businessPartnerName}"/>
-                            <PropertyValue Property="Value" Path="BusinessPartnerName"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                            <PropertyValue Property="Value" Path="BusinessPartnerId"/>
                         </Record>
+
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="{@i18n>businessPartner}"/>
-                            <PropertyValue Property="Value" Path="BusinessPartner"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                            <PropertyValue Property="Value" Path="TransactionId"/>
                         </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Label" String="Re-Forbearance"/>
-                            <PropertyValue Property="Value" Path="FlagRefbe"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="CreatedBy"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
-                        </Record>
-                    </Collection>
+</Collection>
                 </Annotation>
                 <Annotation Term="UI.DataPoint" Qualifier="ClientName">
                     <Record>
@@ -101,7 +89,6 @@
                                 </Record>
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value" Path="TransactionId"/>
-                                    <PropertyValue Property="Label" String="{@i18n>referenceNumber}"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -146,6 +133,44 @@
                         <PropertyValue Property="Title" String="{@i18n>referenceNumber}"/>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Only for test"/>
+                            <PropertyValue Property="ID" String="Test"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="TestSub"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Test"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="{@i18n>forbearanceIfrs9modification}"/>
+                            <PropertyValue Property="ID" String="Forbearance"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="FBE"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Forbearance"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="FBE_POS"/>
+                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@UI.PresentationVariant#VariantFBE"/>
+                                        <Annotation Term="UI.Hidden" Path="HideVariantFBE"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="ID" String="FBE_POS_IFRS9"/>
+                                        <PropertyValue Property="Target" AnnotationPath="_Positions/@UI.PresentationVariant#VariantNoFBE"/>
+                                        <Annotation Term="UI.Hidden" Path="HideVariantNoFBE"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
             <Annotations Target="SAP__self.PositionType">
                 <Annotation Term="UI.LineItem">
@@ -186,6 +211,66 @@
                         </Record>
                     </Collection>
                 </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="VariantFBE">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="ID"/>
+                            <PropertyValue Property="Value" Path="ContractNumber"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>typeOfModification}"/>
+                            <PropertyValue Property="Value" Path="FbeModtype"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>leading}"/>
+                            <PropertyValue Property="Value" Path="FbeModflag"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>ifrs9}"/>
+                            <PropertyValue Property="Value" Path="IFRS9"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>contractAdjustment}"/>
+                            <PropertyValue Property="Value" Path="ChngContract"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>modificationDate}"/>
+                            <PropertyValue Property="Value" Path="FbeModdate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>contractAdjustmentDate}"/>
+                            <PropertyValue Property="Value" Path="ChngContractDate"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="VariantNoFBE">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="ID"/>
+                            <PropertyValue Property="Value" Path="ContractNumber"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>ifrs9}"/>
+                            <PropertyValue Property="Value" Path="IFRS9"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>contractAdjustmentDate}"/>
+                            <PropertyValue Property="Value" Path="ChngContractDate"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.HeaderType/BusinessPartnerId">
+                <Annotation Term="Common.Label" String="{@i18n>businessPartnerGuid}"/>
+            </Annotations>
+            <Annotations Target="SAP__self.HeaderType/TransactionId">
+                <Annotation Term="Common.Label" String="{@i18n>transactionGuid}"/>
             </Annotations>
         </Schema>
     </edmx:DataServices>
