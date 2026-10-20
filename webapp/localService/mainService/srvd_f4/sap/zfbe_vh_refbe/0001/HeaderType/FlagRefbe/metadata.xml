@@ -171,6 +171,9 @@
                 <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
                 <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
             </Annotations>
+            <Annotations Target="SAP__self.ZFBE_VH_REFBEType/Value">
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

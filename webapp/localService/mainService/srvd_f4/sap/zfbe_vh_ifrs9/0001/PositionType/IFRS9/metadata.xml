@@ -64,7 +64,7 @@
             <Annotations Target="SAP__ParentService.PositionType/IFRS9">
                 <Annotation Term="SAP__common.ValueListMapping">
                     <Record>
-                        <PropertyValue Property="Label" String="value help for ifrs9"/>
+                        <PropertyValue Property="Label" String="value help for ifrs9 modification"/>
                         <PropertyValue Property="CollectionPath" String="ZFBE_VH_IFRS9"/>
                         <PropertyValue Property="Parameters">
                             <Collection>
@@ -81,7 +81,7 @@
                 </Annotation>
             </Annotations>
             <Annotations Target="SAP__self.ZFBE_VH_IFRS9Type">
-                <Annotation Term="SAP__common.Label" String="value help for ifrs9"/>
+                <Annotation Term="SAP__common.Label" String="value help for ifrs9 modification"/>
             </Annotations>
             <Annotations Target="SAP__self.Container/ZFBE_VH_IFRS9">
                 <Annotation Term="SAP__capabilities.SearchRestrictions">

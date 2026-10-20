@@ -58,6 +58,7 @@
                 <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="13"/>
                 <Property Name="StartOfTerm" Type="Edm.Date"/>
                 <Property Name="Capital" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="variable"/>
+                <Property Name="FinBei" Type="Edm.String" Nullable="false" MaxLength="32"/>
                 <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5"/>
                 <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10"/>
                 <Property Name="BusinessPartnerGuid" Type="Edm.Guid"/>
@@ -109,6 +110,9 @@
                                 </Record>
                                 <Record Type="SAP__common.ValueListParameterDisplayOnly">
                                     <PropertyValue Property="ValueListProperty" String="Capital"/>
+                                </Record>
+                                <Record Type="SAP__common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinBei"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
