@@ -153,9 +153,6 @@
                 <Property Name="OpportunityId" Type="Edm.String" Nullable="false" MaxLength="10"/>
                 <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="2"/>
                 <Property Name="StatusText" Type="Edm.String" Nullable="false" MaxLength="20"/>
-                <Property Name="HideFbeFields" Type="Edm.Boolean" Nullable="false"/>
-                <Property Name="HideVariantFBE" Type="Edm.Boolean" Nullable="false"/>
-                <Property Name="HideVariantNoFBE" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
@@ -619,7 +616,7 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/IFRS9">
                 <Annotation Term="SAP__common.Text" Path="IFRS9Text">
-                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextLast"/>
+                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextOnly"/>
                 </Annotation>
                 <Annotation Term="SAP__common.FieldControl" Path="__FieldControl/IFRS9"/>
                 <Annotation Term="SAP__common.IsUpperCase"/>
@@ -850,7 +847,7 @@
                 <Annotation Term="SAP__UI.LineItem">
                     <Collection>
                         <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Label" String="Contract-ID"/>
+                            <PropertyValue Property="Label" String="Contract"/>
                             <PropertyValue Property="Value" Path="ContractNumber"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
@@ -952,7 +949,6 @@
                     </Collection>
                 </Annotation>
                 <Annotation Term="SAP__common.ValueListWithFixedValues"/>
-                <Annotation Term="SAP__UI.Hidden" Path="HideFbeFields"/>
                 <Annotation Term="SAP__common.Heading" String="Re-Forbearance"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Re-Forbearance"/>
             </Annotations>
@@ -1059,24 +1055,6 @@
             <Annotations Target="SAP__self.HeaderType/StatusText">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="SAP__self.HeaderType/HideFbeFields">
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-                <Annotation Term="SAP__common.Label" String="TRUE"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
-            </Annotations>
-            <Annotations Target="SAP__self.HeaderType/HideVariantFBE">
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-                <Annotation Term="SAP__common.Label" String="TRUE"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
-            </Annotations>
-            <Annotations Target="SAP__self.HeaderType/HideVariantNoFBE">
-                <Annotation Term="SAP__core.Computed"/>
-                <Annotation Term="SAP__UI.Hidden"/>
-                <Annotation Term="SAP__common.Label" String="TRUE"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
             </Annotations>
             <Annotations Target="SAP__self.HeaderType/HasDraftEntity">
                 <Annotation Term="SAP__core.Computed"/>
@@ -1214,9 +1192,6 @@
                                 <PropertyPath>OpportunityId</PropertyPath>
                                 <PropertyPath>Status</PropertyPath>
                                 <PropertyPath>StatusText</PropertyPath>
-                                <PropertyPath>HideFbeFields</PropertyPath>
-                                <PropertyPath>HideVariantFBE</PropertyPath>
-                                <PropertyPath>HideVariantNoFBE</PropertyPath>
                                 <PropertyPath>__CreateByAssociationControl</PropertyPath>
                                 <PropertyPath>__EntityControl</PropertyPath>
                                 <PropertyPath>__OperationControl</PropertyPath>
@@ -1247,9 +1222,6 @@
                                 <PropertyPath>OpportunityId</PropertyPath>
                                 <PropertyPath>Status</PropertyPath>
                                 <PropertyPath>StatusText</PropertyPath>
-                                <PropertyPath>HideFbeFields</PropertyPath>
-                                <PropertyPath>HideVariantFBE</PropertyPath>
-                                <PropertyPath>HideVariantNoFBE</PropertyPath>
                                 <PropertyPath>__CreateByAssociationControl</PropertyPath>
                                 <PropertyPath>__EntityControl</PropertyPath>
                                 <PropertyPath>__OperationControl</PropertyPath>
@@ -1352,38 +1324,6 @@
                         <PropertyValue Property="Title" String="Status"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="SAP__UI.HeaderFacets">
-                    <Collection>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_BP_NAME"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPName"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_BP_NUMBER"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumber"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_BP_NUMBEREXT"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumberExt"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_REFERENCE_NUMBER"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#ReferenceNumber"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_STATUS"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Status"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="Creation"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Creation"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="Changing"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Changing"/>
-                        </Record>
-                    </Collection>
-                </Annotation>
                 <Annotation Term="SAP__UI.Facets">
                     <Collection>
                         <Record Type="SAP__UI.CollectionFacet">
@@ -1421,6 +1361,38 @@
                                     </Record>
                                 </Collection>
                             </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_BP_NAME"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPName"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_BP_NUMBER"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumber"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_BP_NUMBEREXT"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumberExt"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_REFERENCE_NUMBER"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#ReferenceNumber"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_STATUS"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Status"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Creation"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Creation"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Changing"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Changing"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -1628,10 +1600,16 @@
                 <Annotation Term="SAP__common.Label" String="Contract Number"/>
                 <Annotation Term="SAP__common.Heading" String="Contract No."/>
             </Annotations>
+            <Annotations Target="SAP__self.VH_Loan_BondType/StartOfTerm">
+                <Annotation Term="SAP__common.Label" String="Vertragsbeginn"/>
+                <Annotation Term="SAP__common.Heading" String="Term Start"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Start of Term"/>
+            </Annotations>
             <Annotations Target="SAP__self.VH_Loan_BondType/Capital">
+                <Annotation Term="SAP__common.Label" String="Zusagebetrag"/>
                 <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
-                <Annotation Term="SAP__common.Label" String="Commitment capital"/>
                 <Annotation Term="SAP__common.Heading" String="Commit.capital"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Commitment capital"/>
             </Annotations>
             <Annotations Target="SAP__self.VH_Loan_BondType/Currency">
                 <Annotation Term="SAP__common.IsCurrency"/>
@@ -1849,7 +1827,7 @@
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/IFRS9Modification">
                 <Annotation Term="SAP__common.Text" Path="IFRS9ModificationText">
-                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextLast"/>
+                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextOnly"/>
                 </Annotation>
                 <Annotation Term="SAP__common.IsUpperCase"/>
                 <Annotation Term="SAP__common.ValueListReferences">
@@ -2027,10 +2005,24 @@
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType">
                 <Annotation Term="SAP__common.Label" String="IFRS9 modifications projection"/>
+                <Annotation Term="SAP__common.SideEffects" Qualifier="SAP__Field_IFRS9ModificationType">
+                    <Record Type="SAP__common.SideEffectsType">
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>IFRS9ModificationType</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>IFRS9Modification</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
                 <Annotation Term="SAP__UI.LineItem">
                     <Collection>
                         <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Label" String="Contract-ID"/>
+                            <PropertyValue Property="Label" String="Contract"/>
                             <PropertyValue Property="Value" Path="ContractNumber"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
@@ -2255,10 +2247,6 @@
             </Annotations>
             <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangeDateTime">
                 <Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
-            </Annotations>
-            <Annotations Target="SAP__self.VH_Loan_BondType/StartOfTerm">
-                <Annotation Term="SAP__common.Label" String="Start of Term"/>
-                <Annotation Term="SAP__common.Heading" String="Term Start"/>
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/CreatedAt">
                 <Annotation Term="SAP__common.Label" String="Created On"/>

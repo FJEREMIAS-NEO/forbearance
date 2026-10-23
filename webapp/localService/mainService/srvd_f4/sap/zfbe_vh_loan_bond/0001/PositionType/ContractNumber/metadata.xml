@@ -71,10 +71,16 @@
                 <Annotation Term="SAP__common.Label" String="Contract Number"/>
                 <Annotation Term="SAP__common.Heading" String="Contract No."/>
             </Annotations>
+            <Annotations Target="SAP__self.ZFBE_VH_LOAN_BONDType/StartOfTerm">
+                <Annotation Term="SAP__common.Label" String="Vertragsbeginn"/>
+                <Annotation Term="SAP__common.Heading" String="Term Start"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Start of Term"/>
+            </Annotations>
             <Annotations Target="SAP__self.ZFBE_VH_LOAN_BONDType/Capital">
+                <Annotation Term="SAP__common.Label" String="Zusagebetrag"/>
                 <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
-                <Annotation Term="SAP__common.Label" String="Commitment capital"/>
                 <Annotation Term="SAP__common.Heading" String="Commit.capital"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Commitment capital"/>
             </Annotations>
             <Annotations Target="SAP__self.ZFBE_VH_LOAN_BONDType/Currency">
                 <Annotation Term="SAP__common.IsCurrency"/>
@@ -240,10 +246,6 @@
                 <Annotation Term="SAP__common.Label" String="BP GUID"/>
                 <Annotation Term="SAP__common.Heading" String="Business Partner GUID"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Business Partner GUID"/>
-            </Annotations>
-            <Annotations Target="SAP__self.ZFBE_VH_LOAN_BONDType/StartOfTerm">
-                <Annotation Term="SAP__common.Label" String="Start of Term"/>
-                <Annotation Term="SAP__common.Heading" String="Term Start"/>
             </Annotations>
         </Schema>
     </edmx:DataServices>
