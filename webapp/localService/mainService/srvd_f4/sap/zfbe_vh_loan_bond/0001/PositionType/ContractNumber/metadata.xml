@@ -72,12 +72,12 @@
                 <Annotation Term="SAP__common.Heading" String="Contract No."/>
             </Annotations>
             <Annotations Target="SAP__self.ZFBE_VH_LOAN_BONDType/StartOfTerm">
-                <Annotation Term="SAP__common.Label" String="Vertragsbeginn"/>
+                <Annotation Term="SAP__common.Label" String="{i18n&gt;startOfTerm}"/>
                 <Annotation Term="SAP__common.Heading" String="Term Start"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Start of Term"/>
             </Annotations>
             <Annotations Target="SAP__self.ZFBE_VH_LOAN_BONDType/Capital">
-                <Annotation Term="SAP__common.Label" String="Zusagebetrag"/>
+                <Annotation Term="SAP__common.Label" String="{i18n&gt;capital}"/>
                 <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
                 <Annotation Term="SAP__common.Heading" String="Commit.capital"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Commitment capital"/>

@@ -106,10 +106,6 @@
                 <Property Name="IFRS9" Type="Edm.String" Nullable="false" MaxLength="3"/>
                 <Property Name="IFRS9Text" Type="Edm.String" Nullable="false" MaxLength="40"/>
                 <Property Name="ChngContractDate" Type="Edm.Date"/>
-                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
-                <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7"/>
-                <Property Name="LastChangedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
-                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
@@ -239,10 +235,6 @@
                 <Property Name="IFRS9Modification" Type="Edm.String" Nullable="false" MaxLength="3"/>
                 <Property Name="IFRS9ModificationText" Type="Edm.String" Nullable="false" MaxLength="40"/>
                 <Property Name="ChngContractDate" Type="Edm.Date"/>
-                <Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
-                <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7"/>
-                <Property Name="LastChangedBy" Type="Edm.String" Nullable="false" MaxLength="12"/>
-                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
                 <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
                 <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
@@ -560,6 +552,7 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/HeadId">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="UUID"/>
                 <Annotation Term="SAP__common.QuickInfo" String="16 Byte UUID in 16 Bytes (Raw Format)"/>
             </Annotations>
@@ -589,6 +582,7 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/FbeModText">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Description"/>
             </Annotations>
             <Annotations Target="SAP__self.PositionType/FbeModdate">
@@ -613,6 +607,7 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/ContractChngText">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
             </Annotations>
             <Annotations Target="SAP__self.PositionType/IFRS9">
                 <Annotation Term="SAP__common.Text" Path="IFRS9Text">
@@ -631,24 +626,16 @@
             </Annotations>
             <Annotations Target="SAP__self.PositionType/IFRS9Text">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
             </Annotations>
             <Annotations Target="SAP__self.PositionType/ChngContractDate">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.Label" String="contract change date"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification date"/>
             </Annotations>
-            <Annotations Target="SAP__self.PositionType/CreatedBy">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Created By"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PositionType/LastChangedBy">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Changed By"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
-            </Annotations>
             <Annotations Target="SAP__self.PositionType/LocalLastChangedAt">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Changed On"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
             </Annotations>
@@ -1012,6 +999,7 @@
             </Annotations>
             <Annotations Target="SAP__self.HeaderType/LocalLastChangedAt">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Changed On"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
             </Annotations>
@@ -1324,6 +1312,38 @@
                         <PropertyValue Property="Title" String="Status"/>
                     </Record>
                 </Annotation>
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_BP_NAME"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPName"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_BP_NUMBER"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumber"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_BP_NUMBEREXT"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumberExt"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_REFERENCE_NUMBER"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#ReferenceNumber"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HEADER_STATUS"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Status"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Creation"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Creation"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="Changing"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Changing"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
                 <Annotation Term="SAP__UI.Facets">
                     <Collection>
                         <Record Type="SAP__UI.CollectionFacet">
@@ -1361,38 +1381,6 @@
                                     </Record>
                                 </Collection>
                             </PropertyValue>
-                        </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__UI.HeaderFacets">
-                    <Collection>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_BP_NAME"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPName"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_BP_NUMBER"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumber"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_BP_NUMBEREXT"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#BPNumberExt"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_REFERENCE_NUMBER"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#ReferenceNumber"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="HEADER_STATUS"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.DataPoint#Status"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="Creation"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Creation"/>
-                        </Record>
-                        <Record Type="SAP__UI.ReferenceFacet">
-                            <PropertyValue Property="ID" String="Changing"/>
-                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Changing"/>
                         </Record>
                     </Collection>
                 </Annotation>
@@ -1434,12 +1422,6 @@
                                 <Record Type="SAP__UI.DataField">
                                     <PropertyValue Property="Value" Path="FlagRefbe"/>
                                 </Record>
-                                <Record Type="SAP__UI.DataField">
-                                    <PropertyValue Property="Value" Path="BusinessPartnerId"/>
-                                </Record>
-                                <Record Type="SAP__UI.DataField">
-                                    <PropertyValue Property="Value" Path="TransactionId"/>
-                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -1453,21 +1435,30 @@
                 <Annotation Term="SAP__UI.LineItem">
                     <Collection>
                         <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Label" String="Business Partner GUID (only for test)"/>
-                            <PropertyValue Property="Value" Path="BusinessPartnerId"/>
+                            <PropertyValue Property="Label" String="Business Partner Name"/>
+                            <PropertyValue Property="Value" Path="BusinessPartnerName"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
                         <Record Type="SAP__UI.DataField">
-                            <PropertyValue Property="Label" String="Transaction GUID (only for test)"/>
-                            <PropertyValue Property="Value" Path="TransactionId"/>
+                            <PropertyValue Property="Label" String="CRM Business Partner Number"/>
+                            <PropertyValue Property="Value" Path="BusinessPartner"/>
                             <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
                         </Record>
-                    </Collection>
-                </Annotation>
-                <Annotation Term="SAP__UI.SelectionFields">
-                    <Collection>
-                        <PropertyPath>BusinessPartnerId</PropertyPath>
-                        <PropertyPath>TransactionId</PropertyPath>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Customer Number"/>
+                            <PropertyValue Property="Value" Path="BusinessPartnerExt"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Reference Number"/>
+                            <PropertyValue Property="Value" Path="OpportunityId"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Label" String="Status"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="Communication.Contact">
@@ -1601,12 +1592,12 @@
                 <Annotation Term="SAP__common.Heading" String="Contract No."/>
             </Annotations>
             <Annotations Target="SAP__self.VH_Loan_BondType/StartOfTerm">
-                <Annotation Term="SAP__common.Label" String="Vertragsbeginn"/>
+                <Annotation Term="SAP__common.Label" String="{i18n&gt;startOfTerm}"/>
                 <Annotation Term="SAP__common.Heading" String="Term Start"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Start of Term"/>
             </Annotations>
             <Annotations Target="SAP__self.VH_Loan_BondType/Capital">
-                <Annotation Term="SAP__common.Label" String="Zusagebetrag"/>
+                <Annotation Term="SAP__common.Label" String="{i18n&gt;capital}"/>
                 <Annotation Term="SAP__measures.ISOCurrency" Path="Currency"/>
                 <Annotation Term="SAP__common.Heading" String="Commit.capital"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Commitment capital"/>
@@ -1794,6 +1785,7 @@
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/HeadId">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="UUID"/>
                 <Annotation Term="SAP__common.QuickInfo" String="16 Byte UUID in 16 Bytes (Raw Format)"/>
             </Annotations>
@@ -1823,6 +1815,7 @@
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/IFRS9ModificationTypeText">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Description"/>
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/IFRS9Modification">
@@ -1841,24 +1834,16 @@
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/IFRS9ModificationText">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/ChngContractDate">
                 <Annotation Term="SAP__core.Computed"/>
                 <Annotation Term="SAP__common.Label" String="contract change date"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification date"/>
             </Annotations>
-            <Annotations Target="SAP__self.IFRS9ModificationsType/CreatedBy">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Created By"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
-            </Annotations>
-            <Annotations Target="SAP__self.IFRS9ModificationsType/LastChangedBy">
-                <Annotation Term="SAP__common.IsUpperCase"/>
-                <Annotation Term="SAP__common.Label" String="Changed By"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
-            </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/LocalLastChangedAt">
                 <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
                 <Annotation Term="SAP__common.Label" String="Changed On"/>
                 <Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
             </Annotations>
@@ -2194,14 +2179,6 @@
                 <Annotation Term="SAP__common.Heading" String="FBE modification flag"/>
                 <Annotation Term="SAP__common.QuickInfo" String="FBE modification flag"/>
             </Annotations>
-            <Annotations Target="SAP__self.PositionType/CreatedAt">
-                <Annotation Term="SAP__common.Label" String="Created On"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
-            </Annotations>
-            <Annotations Target="SAP__self.PositionType/LastChangedAt">
-                <Annotation Term="SAP__common.Label" String="Changed On"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
-            </Annotations>
             <Annotations Target="SAP__self.PositionType/__EntityControl/Deletable">
                 <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
                 <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
@@ -2247,14 +2224,6 @@
             </Annotations>
             <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangeDateTime">
                 <Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
-            </Annotations>
-            <Annotations Target="SAP__self.IFRS9ModificationsType/CreatedAt">
-                <Annotation Term="SAP__common.Label" String="Created On"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
-            </Annotations>
-            <Annotations Target="SAP__self.IFRS9ModificationsType/LastChangedAt">
-                <Annotation Term="SAP__common.Label" String="Changed On"/>
-                <Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
             </Annotations>
             <Annotations Target="SAP__self.IFRS9ModificationsType/__EntityControl/Deletable">
                 <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>

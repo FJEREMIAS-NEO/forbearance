@@ -20,17 +20,6 @@
                 <Annotation Term="Common.Label" String="{@i18n>createdBy}" />
             </Annotations>
             <Annotations Target="SAP__self.HeaderType">
-                <Annotation Term="UI.LineItem">
-                    <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="BusinessPartnerId" />
-                        </Record>
-
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="TransactionId" />
-                        </Record>
-                    </Collection>
-                </Annotation>
                 <Annotation Term="UI.DataPoint" Qualifier="ClientName">
                     <Record>
                         <PropertyValue Property="Value" Path="BusinessPartnerName" />
@@ -184,15 +173,38 @@
                                 <Record Type="UI.DataField">
                                     <PropertyValue Property="Value" Path="FlagRefbe"/>
                                 </Record>
-                                <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value" Path="BusinessPartnerId"/>
-                                </Record>
-                                <Record Type="UI.DataField">
-                                    <PropertyValue Property="Value" Path="TransactionId"/>
-                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>businessPartnerName}"/>
+                            <PropertyValue Property="Value" Path="BusinessPartnerName"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>businessPartner}"/>
+                            <PropertyValue Property="Value" Path="BusinessPartner"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>businessPartnerExtern}"/>
+                            <PropertyValue Property="Value" Path="BusinessPartnerExt"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>referenceNumber}"/>
+                            <PropertyValue Property="Value" Path="OpportunityId"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="{@i18n>status}"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
                 </Annotation>
             </Annotations>
             <Annotations Target="SAP__self.PositionType">
